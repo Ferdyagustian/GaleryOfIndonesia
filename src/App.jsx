@@ -66,7 +66,7 @@ export default function App() {
       <div className="fixed inset-0 z-0 bg-black/30" />
 
       {/* BGM Audio */}
-      <audio ref={audioRef} src="/bgm/Sabilulungan.mp3" loop />
+      <audio ref={audioRef} src="/audio/Sabilulungan.mp3" loop preload="auto" />
 
       {/* Audio Player — bottom right */}
       <button
