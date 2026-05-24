@@ -3,7 +3,7 @@ import { useState } from 'react';
 const guideItems = [
   {
     title: 'Masuk ke Museum 3D',
-    icon: '',
+    icon: '🎮',
     steps: [
       'Klik tombol "Masuk Museum 3D" di navbar atau hero section.',
       'Ikuti instruksi kontrol yang muncul di layar.',
@@ -12,7 +12,7 @@ const guideItems = [
   },
   {
     title: 'Kontrol Desktop',
-    icon: '',
+    icon: '🖥️',
     steps: [
       'W / A / S / D — Bergerak ke depan, kiri, belakang, kanan.',
       'MOUSE — Melihat sekeliling 360°.',
@@ -21,8 +21,17 @@ const guideItems = [
     ],
   },
   {
+    title: 'Kontrol Mobile',
+    icon: '📱',
+    steps: [
+      'Joystick kiri — Menggerakkan karakter.',
+      'Swipe kanan — Melihat sekeliling.',
+      'Tombol aksi — Masuk ke ruangan / interaksi dengan objek.',
+    ],
+  },
+  {
     title: 'Interaksi dengan Objek Pajangan',
-    icon: '',
+    icon: '🖼️',
     steps: [
       'Dekati meja pajangan di dalam museum.',
       'Panel informasi akan muncul otomatis.',
@@ -50,6 +59,8 @@ export default function PanduanTab() {
               <button
                 className="w-full flex items-center justify-between p-5 text-left hover:bg-amber-50 transition"
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+                aria-expanded={openIndex === idx}
+                aria-controls={`panduan-panel-${idx}`}
               >
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">{item.icon}</span>
@@ -60,7 +71,7 @@ export default function PanduanTab() {
                 </span>
               </button>
               {openIndex === idx && (
-                <div className="px-5 pb-5 border-t border-gray-100">
+                <div id={`panduan-panel-${idx}`} className="px-5 pb-5 border-t border-gray-100">
                   <ul className="mt-4 space-y-2">
                     {item.steps.map((step, si) => (
                       <li key={si} className="flex gap-3 text-gray-700 text-sm">
