@@ -1,0 +1,27 @@
+{
+  "name": "warisan-budaya-nusameta",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vitejs/plugin-legacy": "^5.4.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "gsap": "latest",
+    "howler": "latest",
+    "nipplejs": "latest",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "three": "latest",
+    "vite": "^5.4.11"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.1",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.1"
+  }
+}
