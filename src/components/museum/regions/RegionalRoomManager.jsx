@@ -30,6 +30,8 @@ export default function RegionalRoomManager({ provId, onExit, onExitToHome, isMu
   const [mouseSensitivity, setMouseSensitivity] = useState(1.0);
   const [inspectingItem, setInspectingItem] = useState(null);
   const [isVoiceOn, setIsVoiceOn] = useState(true);
+  const [isSpawning, setIsSpawning] = useState(true);
+
 
   // Data
   const province = provincesData.find(p => p.id === provId);
@@ -48,6 +50,12 @@ export default function RegionalRoomManager({ provId, onExit, onExitToHome, isMu
     isInspecting: !!inspectingItem,
     autoLock: true
   });
+
+  useEffect(() => {
+    if (isLocked) {
+      setIsSpawning(false);
+    }
+  }, [isLocked]);
 
   const interactablesRef = useRef({ portals: [], artifacts: [], interactableCases: [] });
 
@@ -254,7 +262,7 @@ export default function RegionalRoomManager({ provId, onExit, onExitToHome, isMu
         />
       )}
 
-      {!isLocked && !isSettingsOpen && !inspectingItem && (
+      {!isLocked && !isSettingsOpen && !inspectingItem && !isSpawning && (
         <PauseMenu 
           onResume={() => {
             if (controls && !controls.isLocked) controls.lock();

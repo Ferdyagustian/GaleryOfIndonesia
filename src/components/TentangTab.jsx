@@ -31,7 +31,6 @@ export default function TentangTab() {
               { name: 'Three.js', desc: '3D Engine' },
               { name: 'Tailwind CSS', desc: 'Styling' },
               { name: 'WebGL', desc: 'Graphics' },
-              { name: 'Web Speech API', desc: 'Text-to-Speech' },
               { name: 'GSAP', desc: 'Animations' },
               { name: 'Howler.js', desc: 'Audio Library' },
             ].map((tech) => (

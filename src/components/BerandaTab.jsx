@@ -54,7 +54,7 @@ export default function BerandaTab({ onOpenMuseum }) {
             muted
             playsInline
             className="w-full h-full object-cover"
-            poster="/images/1883209.jpg" /* Fallback image */
+            poster="/images/1883209.webp" /* Fallback image */
           >
             <source src="/videos/cuplikan.mp4" type="video/mp4" />
             Your browser does not support the video tag.

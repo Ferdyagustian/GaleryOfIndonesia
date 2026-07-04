@@ -11,22 +11,22 @@ const artifactDetails = {
   1: {
     title: "Pendar Nusantara",
     description: "Di hadapan Anda melayang 'Pendar Nusantara', sebuah representasi digital dari jantung Indonesia. Instalasi ini memetakan gugusan kepulauan kita tidak hanya sebagai batasan geografis, melainkan sebagai mosaik identitas yang hidup. Setiap rona warna yang berpendar mewakili keunikan tradisi, bahasa, dan sejarah dari masing-masing provinsi. Perbedaan warna ini tidak berdiri sendiri, melainkan terangkai menjadi satu kesatuan visual yang utuh dan kokoh. Silakan berinteraksi dengan setiap wilayah untuk menyingkap warisan budaya yang tersimpan di dalamnya.",
-    audio: "/audio/narasi1.wav"
+    audio: "/audio/narasi1.mp3"
   },
   2: {
     title: "Garuda",
     description: "Di hadapan Anda berdiri dengan gagah, Garuda Pancasila, lambang negara kebanggaan Republik Indonesia. Sosok burung garuda berwarna keemasan ini merepresentasikan kejayaan dan keagungan bangsa kita. Perhatikan perisai di dadanya yang menjadi ruang bagi kelima sila dasar negara, serta cengkeraman kuat pada pita yang menggemakan semangat persatuan abadi: Bhinneka Tunggal Ika",
-    audio: "/audio/narasi2.wav"
+    audio: "/audio/narasi2.mp3"
   },
   3: {
     title: "Wajah Digital Bangsa",
     description: "Selamat datang di instalasi 'Wajah Digital Bangsa'. Objek yang Anda lihat ini merupakan personifikasi jenaka dari identitas nasional kita, yang lahir dan populer di tengah arus budaya internet global. Dikenal luas sebagai bagian dari fenomena narasi visual digital, karakter ini membuktikan bahwa diplomasi budaya, sejarah, dan interaksi antarnegara di era modern tidak hanya terjadi di ruang-ruang sidang formal. Ia hidup, berevolusi, dan dirayakan setiap hari oleh generasi muda melalui humor, meme, dan kreativitas tanpa batas di dunia maya. Sebuah bukti bahwa nasionalisme dan kebanggaan bisa diekspresikan lewat senyuman sederhana.",
-    audio: "/audio/narasi3.wav"
+    audio: "/audio/narasi3.mp3"
   },
   4: {
     title: "Resolusi Kemerdekaan",
     description: "Menjulang di hadapan Anda adalah 'Resolusi Kemerdekaan', sebuah interpretasi kontemporer dari Monumen Nasional (Monas) yang dibangun ulang melalui ketelitian estetika voxel. Susunan kubus-kubus digital ini—layaknya pixel yang membentuk dunia virtual—menyimbolkan bahwa sejarah bangsa kita tidak dibangun dalam satu malam, melainkan disusun keping demi keping, elemen demi elemen, oleh tekad jutaan rakyat Indonesia. Dari fondasi pelataran hingga nyala api emas di puncaknya, instalasi ini mengajak kita merenungkan bahwa kemerdekaan dan masa depan Nusantara adalah sebuah mahakarya yang terus kita bangun bersama dalam dimensi ruang dan waktu.",
-    audio: "/audio/narasi4.wav"
+    audio: "/audio/narasi4.mp3"
   }
 };
 
@@ -72,9 +72,9 @@ export default function ArtifactInspector({ itemId, onClose, onDuckMusic, narrat
           description: contentData.body || prov.desc,
           audio: prov.audioSejarah || `/audio/narasi_${provId}_sejarah.mp3`,
           images: [
-            `/images/ilustrasi_${provId}_sejarah.png`,
-            `/images/ilustrasi_${provId}_sejarah_2.png`,
-            `/images/ilustrasi_${provId}_sejarah_3.png`
+            `/images/ilustrasi_${provId}_sejarah.webp`,
+            `/images/ilustrasi_${provId}_sejarah_2.webp`,
+            `/images/ilustrasi_${provId}_sejarah_3.webp`
           ]
         };
         is2DMode = true;
@@ -86,9 +86,9 @@ export default function ArtifactInspector({ itemId, onClose, onDuckMusic, narrat
           description: contentData.body || prov.desc,
           audio: prov.audioBahasa || `/audio/narasi_${provId}_bahasa.mp3`,
           images: [
-            `/images/ilustrasi_${provId}_bahasa.png`,
-            `/images/ilustrasi_${provId}_bahasa_2.png`,
-            `/images/ilustrasi_${provId}_bahasa_3.png`
+            `/images/ilustrasi_${provId}_bahasa.webp`,
+            `/images/ilustrasi_${provId}_bahasa_2.webp`,
+            `/images/ilustrasi_${provId}_bahasa_3.webp`
           ]
         };
         is2DMode = true;
@@ -165,10 +165,12 @@ export default function ArtifactInspector({ itemId, onClose, onDuckMusic, narrat
     controls.autoRotateSpeed = 2.0;
 
     // 4. Load Model
-    const dracoLoader = new DRACOLoader();
+    // Gunakan LoadingManager terpisah agar tidak memicu global loading screen
+    const independentManager = new THREE.LoadingManager();
+    const dracoLoader = new DRACOLoader(independentManager);
     dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
 
-    const gltfLoader = new GLTFLoader();
+    const gltfLoader = new GLTFLoader(independentManager);
     gltfLoader.setDRACOLoader(dracoLoader);
 
     gltfLoader.load(
@@ -340,6 +342,26 @@ export default function ArtifactInspector({ itemId, onClose, onDuckMusic, narrat
 
               {/* Subtle Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent z-10 pointer-events-none" />
+
+              {/* Progress Bar Visual (UI UX Pro Max) */}
+              {details.images && details.images.length > 1 && (
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10 z-20 overflow-hidden">
+                  <div 
+                    key={currentImageIndex} 
+                    className="h-full bg-amber-500/80"
+                    style={{
+                      animation: 'slider-progress 10s linear forwards',
+                      animationPlayState: isHoveringImage ? 'paused' : 'running'
+                    }}
+                  />
+                  <style>{`
+                    @keyframes slider-progress {
+                      from { width: 0%; }
+                      to { width: 100%; }
+                    }
+                  `}</style>
+                </div>
+              )}
 
               {/* Carousel Indicators (Dots) */}
               {details.images && details.images.length > 1 && (

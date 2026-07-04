@@ -71,7 +71,7 @@ export default function CutsceneOverlay({ onSkip, onDuckMusic, narratorVolume })
 
       <audio 
         ref={audioRef} 
-        src="/audio/lobbyutama.wav" 
+        src="/audio/lobbyutama.mp3" 
         onEnded={onSkip}
         onTimeUpdate={handleTimeUpdate}
       />
