@@ -23,7 +23,7 @@ export default function KontenTab({ targetProvId, onClearTargetProvId }) {
         <div
           className="absolute inset-0 z-0 opacity-20"
           style={{
-            backgroundImage: `url(/images/1.jpg)`,
+            backgroundImage: `url(/images/1.webp)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             filter: 'blur(8px)',

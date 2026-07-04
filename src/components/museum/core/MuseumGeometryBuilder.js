@@ -497,7 +497,7 @@ export function buildMuseumGeometry(scene, renderer) {
 
       scene.add(frameGroup);
 
-      new THREE.TextureLoader().load(`/gallery/gambar${imgIndex}.jpg`, (texture) => {
+      new THREE.TextureLoader().load(`/gallery/gambar${imgIndex}.webp`, (texture) => {
         texture.colorSpace = THREE.SRGBColorSpace;
         canvasMat.map = texture;
         canvasMat.needsUpdate = true;

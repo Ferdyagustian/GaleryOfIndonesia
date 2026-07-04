@@ -4,7 +4,7 @@ export const provincesData = [
     name: "Sumatera",
     ethnicity: "Minangkabau",
     color: "#8b0000",
-    cardImage: "/cardimg/sumatera.png",
+    cardImage: "/cardimg/sumatera.webp",
     artifactModel: "sumaterabarat.glb",
     desc: "Rumah Gadang adalah mahakarya arsitektur tradisional suku Minangkabau dari pesisir dan pegunungan Sumatera Barat. Ciri khas paling ikonik dari bangunan ini adalah bentuk atapnya yang menjulang dan melengkung tajam menyerupai tanduk kerbau, yang dikenal dengan sebutan atap gonjong. Dibangun dengan pemahaman ekologis tingkat tinggi, struktur rumah panggung ini tidak menggunakan paku besi, melainkan sistem pasak kayu yang membuatnya sangat fleksibel dan adaptif terhadap gempa bumi. Lebih dari sekadar hunian, Rumah Gadang adalah pusat kehidupan komunal, lambang identitas kaum, dan manifestasi dari sistem kekerabatan matrilineal masyarakat Minangkabau.",
     exhibits: [
@@ -29,7 +29,7 @@ export const provincesData = [
     name: "Jawa Barat",
     ethnicity: "Sunda",
     color: "#2e8b57",
-    cardImage: "/cardimg/sunda.jpg",
+    cardImage: "/cardimg/sunda.webp",
     artifactModel: "jawabarat.glb",
     desc: "Gedung Sate adalah mahakarya arsitektur bersejarah sekaligus ikon kebanggaan Kota Bandung, Jawa Barat. Mulai dibangun pada tahun 1920, desain bangunan ini memadukan keanggunan arsitektur Eropa modern dengan sentuhan tradisional Nusantara, terlihat dari struktur atap utama yang mengadopsi bentuk tumpang (meru) bergaya Bali atau pagoda. Nama 'Gedung Sate' diambil dari ciri khas puncaknya yang memiliki ornamen menyerupai tusuk sate dengan enam buah penyemat. Keenam penyemat tersebut melambangkan total biaya pembangunan gedung ini pada masa kolonial, yakni sebesar enam juta gulden. Saat ini, Gedung Sate berfungsi sebagai pusat pemerintahan Provinsi Jawa Barat.",
     exhibits: [
@@ -54,7 +54,7 @@ export const provincesData = [
     name: "Jawa Tengah",
     ethnicity: "Jawa",
     color: "#cd853f",
-    cardImage: "/cardimg/jawa.jpeg",
+    cardImage: "/cardimg/jawa.webp",
     artifactModel: "jawatengah.glb",
     desc: "Rumah Joglo merupakan mahakarya arsitektur tradisional peninggalan sejarah budaya Jawa, khususnya Jawa Tengah. Ciri paling menonjol dari bangunan ini adalah desain atap menjulang tinggi yang disebut tajug, menyerupai bentuk gunung sebagai simbol ruang sakral. Struktur utama bangunan ini ditopang oleh empat tiang penyangga di bagian tengah yang dinamakan Soko Guru, merepresentasikan keseimbangan empat arah mata angin. Lebih dari sekadar hunian, arsitektur Joglo adalah cerminan status sosial serta perwujudan harmoni antara manusia, alam, dan nilai-nilai luhur kehidupan masyarakat Jawa.",
     exhibits: [
@@ -79,7 +79,7 @@ export const provincesData = [
     name: "Bali",
     ethnicity: "Bali (Hindu)",
     color: "#ff8c00",
-    cardImage: "/cardimg/bali.jpg",
+    cardImage: "/cardimg/bali.webp",
     artifactModel: "bali.glb",
     desc: "Pelinggih Meru adalah struktur bangunan suci paling ikonik dalam arsitektur pura di Bali. Dibangun sebagai simbol dari Gunung Suci (Mahameru) yang merupakan pusat alam semesta dan stana para dewa. Ciri khas utama bangunan ini adalah atapnya yang bertingkat ganjil (tumpang), mulai dari satu hingga sebelas tingkat, tergantung pada status dewa yang dipuja. Material atapnya secara tradisional menggunakan ijuk hitam yang kuat dan tahan lama, ditopang oleh struktur kayu berukir yang mencerminkan harmoni konsep Tri Hita Karana—keseimbangan antara manusia, alam, dan Sang Pencipta",
     exhibits: [
@@ -104,7 +104,7 @@ export const provincesData = [
     name: "Kalimantan",
     ethnicity: "Dayak",
     color: "#8b4513",
-    cardImage: "/cardimg/dayak.jpg",
+    cardImage: "/cardimg/kalimantan.webp",
     artifactModel: "kalimantantimur.glb",
     desc: "Wilayah adat suku Dayak dengan tradisi upacara adat, rumah betang, dan harmoni dengan alam yang mendalam.",
     exhibits: [
@@ -129,7 +129,7 @@ export const provincesData = [
     name: "Papua",
     ethnicity: "Papua (Dani)",
     color: "#556b2f",
-    cardImage: "/cardimg/papua.png",
+    cardImage: "/cardimg/papua.webp",
     artifactModel: "papua.glb",
     desc: "Rumah Honai adalah mahakarya arsitektur tradisional khas suku Dani yang berasal dari Provinsi Papua. Ciri utama yang membuatnya sangat ikonik adalah bentuknya yang unik berupa rumah panggung bundar dengan atap kerucut tinggi yang terbuat dari jerami atau ilalang. Secara filosofis, bentuk bundar ini melambangkan persatuan dan kebersamaan, mencerminkan nilai komunal masyarakat Dani yang menjunjung tinggi kekeluargaan. Honai berfungsi sebagai hunian sekaligus pusat kegiatan sosial, tempat berkumpulnya para pria untuk berdiskusi, beristirahat, serta memelihara tradisi dan budaya.",
     exhibits: [
@@ -154,7 +154,7 @@ export const provincesData = [
     name: "Sulawesi",
     ethnicity: "Bugis-Makassar-Toraja",
     color: "#b71c1c",
-    cardImage: "/cardimg/sulawesi.jpeg",
+    cardImage: "/cardimg/sulawesi.webp",
     artifactModel: "sulawesiselatan.glb",
     desc: "Rumah Tongkonan adalah mahakarya arsitektur tradisional suku Toraja yang berasal dari Provinsi Sulawesi Selatan. Ciri fisik yang paling mencolok dari bangunan panggung ini adalah struktur atapnya yang megah dan melengkung tajam ke atas menyerupai bentuk perahu. Secara filosofis, bentuk atap ini merupakan simbol penghormatan kepada para leluhur Toraja yang dipercaya datang mengarungi lautan menggunakan perahu. Kata 'Tongkonan' sendiri berasal dari kata 'tongkon' yang berarti duduk bersama. Oleh karena itu, bangunan ini bukan sekadar tempat tinggal biasa, melainkan pusat kehidupan spiritual, tempat musyawarah adat, dan simbol sakral yang menyatukan ikatan kekerabatan keluarga besar Toraja.",
     exhibits: [

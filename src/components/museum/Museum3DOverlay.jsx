@@ -34,6 +34,8 @@ export default function Museum3DOverlay({
   const hasStartedRef = useRef(!!spawnPortalId);
   const cutsceneTlRef = useRef(null);
   const [isVoiceOn, setIsVoiceOn] = useState(true);
+  const [isSpawning, setIsSpawning] = useState(!!spawnPortalId);
+
 
   // Settings
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -56,6 +58,12 @@ export default function Museum3DOverlay({
     hasStarted,
     autoLock: false // handled by cutscene or start
   });
+
+  useEffect(() => {
+    if (isLocked) {
+      setIsSpawning(false);
+    }
+  }, [isLocked]);
 
   const interactablesRef = useRef({ portals: [], artifacts: [], pillars: [], interactableCases: [], particlesMesh: null });
   const lookTargetRef = useRef(new THREE.Vector3(0, 5, 0));
@@ -329,6 +337,8 @@ export default function Museum3DOverlay({
         <ArtifactInspector
           itemId={inspectingItem}
           isVoiceOn={isVoiceOn}
+          onDuckMusic={onDuckMusic}
+          narratorVolume={narratorVolume}
           onClose={() => {
             setInspectingItem(null);
             if (controls) controls.lock();
@@ -338,7 +348,7 @@ export default function Museum3DOverlay({
       )}
 
       {/* Pause Menu (Muncul saat tidak terkunci, sesudah start, dan tidak sedang buka settings/inspeksi) */}
-      {!isLocked && hasStarted && !isCutscenePlaying && !isSettingsOpen && !inspectingItem && (
+      {!isLocked && hasStarted && !isCutscenePlaying && !isSettingsOpen && !inspectingItem && !isSpawning && (
         <PauseMenu
           onResume={() => controls && controls.lock()}
           onExit={onClose}

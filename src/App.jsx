@@ -7,11 +7,12 @@ import PanduanTab from './components/PanduanTab.jsx';
 import TentangTab from './components/TentangTab.jsx';
 import Museum3DOverlay from './components/museum/Museum3DOverlay.jsx';
 import RegionalRoomManager from './components/museum/regions/RegionalRoomManager.jsx';
+import LoadingScreen from './components/ui/LoadingScreen.jsx';
 
 const backgrounds = [
-  '/images/1.jpg',
-  '/images/2.jpg',
-  '/images/1883209.jpg',
+  '/images/1.webp',
+  '/images/2.webp',
+  '/images/1883209.webp',
 ];
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
   const [active3DRoom, setActive3DRoom] = useState(null); // null | 'main' | provId
   const [lastVisitedRoom, setLastVisitedRoom] = useState(null);
   const [targetProvId, setTargetProvId] = useState(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const audioRef = useRef(null);
 
   // Volume States
@@ -80,8 +82,19 @@ export default function App() {
     }
   }, []);
 
+  const handleOpenMuseum = (roomId = 'main') => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActive3DRoom(roomId);
+      // Memberi waktu bagi komponen 3D baru untuk mount dan memicu THREE.DefaultLoadingManager.onStart
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 100);
+    }, 500);
+  };
+
   const tabs = {
-    beranda: <BerandaTab onOpenMuseum={() => setActive3DRoom('main')} />,
+    beranda: <BerandaTab onOpenMuseum={() => handleOpenMuseum('main')} />,
     konten: <KontenTab targetProvId={targetProvId} onClearTargetProvId={() => setTargetProvId(null)} />,
     panduan: <PanduanTab />,
     tentang: <TentangTab />,
@@ -155,11 +168,13 @@ export default function App() {
 
       {/* Content */}
       <div className="relative z-10">
-        <Navbar activeTab={activeTab} setActiveTab={setActiveTab} onOpenMuseum={() => setActive3DRoom('main')} />
+        <Navbar activeTab={activeTab} setActiveTab={setActiveTab} onOpenMuseum={() => handleOpenMuseum('main')} />
         <main className="pt-16">
           {tabs[activeTab]}
         </main>
       </div>
+
+      <LoadingScreen forceShow={isTransitioning} room={active3DRoom} />
 
       {active3DRoom === 'main' && (
         <Museum3DOverlay 
@@ -172,12 +187,20 @@ export default function App() {
           setNarratorVolume={setNarratorVolume}
           spawnPortalId={lastVisitedRoom}
           onClose={() => {
-            setActive3DRoom(null);
-            setLastVisitedRoom(null);
+            setIsTransitioning(true);
+            setTimeout(() => {
+              setActive3DRoom(null);
+              setLastVisitedRoom(null);
+              setTimeout(() => setIsTransitioning(false), 100);
+            }, 500);
           }} 
           onEnterPortal={(provId) => {
-            setLastVisitedRoom(provId);
-            setActive3DRoom(provId);
+            setIsTransitioning(true);
+            setTimeout(() => {
+              setLastVisitedRoom(provId);
+              setActive3DRoom(provId);
+              setTimeout(() => setIsTransitioning(false), 100);
+            }, 500);
           }}
         />
       )}
@@ -192,10 +215,20 @@ export default function App() {
           setBgVolume={setBgVolume}
           narratorVolume={narratorVolume}
           setNarratorVolume={setNarratorVolume}
-          onExit={() => setActive3DRoom('main')}
+          onExit={() => {
+            setIsTransitioning(true);
+            setTimeout(() => {
+              setActive3DRoom('main');
+              setTimeout(() => setIsTransitioning(false), 100);
+            }, 500);
+          }}
           onExitToHome={() => {
-            setActive3DRoom(null);
-            setLastVisitedRoom(null);
+            setIsTransitioning(true);
+            setTimeout(() => {
+              setActive3DRoom(null);
+              setLastVisitedRoom(null);
+              setTimeout(() => setIsTransitioning(false), 100);
+            }, 500);
           }}
         />
       )}
